@@ -5,12 +5,12 @@ import TodoAddItem from './TodoAddItem';
 import TodoContainer from './TodoContainer';
 
 function App() {
-  let data= ['item1', 'item2'];
+  let data = [];
   return (
     <div className="App">
       <header className="App-header">
         <div>
-          <TodoAddItem />
+          <TodoAddItem items={data}/>
           <TodoContainer items={data} />
         </div>
       </header>
@@ -19,3 +19,5 @@ function App() {
 }
 
 export default App;
+
+
