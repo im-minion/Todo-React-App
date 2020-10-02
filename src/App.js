@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-// import logo from './logo.svg';
 import './App.css';
 import TodoAddItem from './TodoAddItem';
 import TodoContainer from './TodoContainer';
 
 function App() {
-  const [data, setData] = useState([]);
-  console.log(data);
+  let exisitngTodos = [];
+  if (localStorage.getItem('data')) {
+    exisitngTodos = localStorage.getItem('data').split(',');
+  }
+  const [data, setData] = useState(exisitngTodos);
   return (
     <div className="App">
       <header className="App-header">

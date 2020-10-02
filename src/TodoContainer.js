@@ -2,12 +2,13 @@ import React from 'react';
 import './Todo.css'
 
 function TodoContainer({ items, setter }) {
-    
-    function handleClick(index, event) {
-        console.log(items);
-        items.splice(index, 1);
-        console.log(items);
-        setter(items);
+
+    function handleClick(event) {
+        const index = event.target.value;
+        let temp = [...items];
+        temp.splice(index, 1);
+        setter(temp);
+        localStorage.setItem('data', temp);
     }
 
     return (
@@ -16,7 +17,7 @@ function TodoContainer({ items, setter }) {
                 items.map((item, index) => (
                     <div key={index} className="item-style">
                         <span >{item}</span>
-                        <button onClick={(event) => handleClick(index, event)}>Delete</button>
+                        <button value={index} onClick={handleClick}>Delete</button>
                     </div>
                 ))
             }

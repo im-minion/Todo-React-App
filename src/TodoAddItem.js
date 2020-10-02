@@ -2,12 +2,13 @@ import React, { useState } from 'react';
 
 function TodoAddItem({ items, setter }) {
 
-    const [todoItem, setTodoItem] = useState();
+    const [todoItem, setTodoItem] = useState('');
 
     function handleClick() {
         let temp = [...items];
         temp.push(todoItem);
         setter(temp);
+        localStorage.setItem('data', temp);
         setTodoItem('');
     }
 
