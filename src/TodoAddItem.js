@@ -1,27 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 
-let textInput = React.createRef();
+function TodoAddItem({ items, setter }) {
 
-// let data;
+    const [todoItem, setTodoItem] = useState();
 
-function TodoAddItem(props) {
-    // data = props.items;
+    function handleClick() {
+        let temp = [...items];
+        temp.push(todoItem);
+        setter(temp);
+        setTodoItem('');
+    }
+
+
     return (
-    <div>
-    <input type="text" ref={textInput} placeholder="Enter Item To add"/>
-    <button disabled={false}
-     onClick={() => handleClick(props.items)}>
-        Add
-    </button>
-    </div>
+        <div>
+            <input type="text" placeholder="Enter Item To add" value={todoItem} onChange={(event) => setTodoItem(event.target.value)} />
+            <button disabled={false}
+                onClick={handleClick}>
+                Add
+            </button>
+        </div>
     );
-}
-
-function handleClick(d) {
-    console.log(textInput.current.value);
-    d.push(textInput.current.value);
-    textInput.current.value = null;
-    console.log(d)
 }
 
 export default TodoAddItem;
